@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>task-managment-api</artifactId>
+	<artifactId>task-management-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Task Managment API</name>
 	<description>Task managment api</description>
