@@ -2,6 +2,7 @@ package com.example.task_management_api.controller;
 
 import com.example.task_management_api.model.Task;
 import com.example.task_management_api.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) {
         Task created = taskService.createTask(task);
         return ResponseEntity.ok(created);
     }
