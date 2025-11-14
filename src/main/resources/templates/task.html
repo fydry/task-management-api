@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Tracker CLI - UI</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .task-list { margin-top: 30px; }
+    .task { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    .status-TODO { color: orange; font-weight: bold; }
+    .status-IN_PROGRESS { color: blue; font-weight: bold; }
+    .status-DONE { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h1>Dodaj Nowe Zadanie</h1>
+
+<form th:action="@{/tasks/add}" th:object="${newTask}" method="post">
+  <div>
+    <label for="title">Tytuł:</label>
+    <input type="text" id="title" th:field="*{title}" required/>
+  </div>
+  <div>
+    <label for="description">Opis:</label>
+    <input type="text" id="description" th:field="*{description}"/>
+  </div>
+  <div>
+    <button type="submit">Dodaj Zadanie</button>
+  </div>
+</form>
+
+<hr/>
+
+<h2>Lista Zadań</h2>
+
+<div class="task-list">
+  <div th:each="task : ${tasks}" class="task">
+    <span th:text="${task.id}"></span>.
+    <strong th:text="${task.title}"></strong>
+    (<span th:classappend="'status-' + ${task.status}" th:text="${task.status}"></span>)
+    <p th:text="${task.description}"></p>
+    <small>Utworzono: <span th:text="${#temporals.format(task.createdAt, 'yyyy-MM-dd HH:mm')}"></span></small>
+  </div>
+</div>
+
+</body>
+</html>
