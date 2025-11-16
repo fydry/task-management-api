@@ -40,9 +40,4 @@ public class TaskController {
         taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
     }
-
-    @GetMapping("/")
-    public String home(){
-        return "TMA is running";
-    }
 }
